@@ -6,8 +6,8 @@
     <!--begin::Login Sign up form-->
     <div class="signup">
         <div class="mb-20">
-            <h3>Sign Up</h3>
-            <div class="text-muted font-weight-bold">Enter your details to create your account</div>
+            <h3>@lang("Register")</h3>
+            <div class="text-muted font-weight-bold">@lang("Enter your details to create your account")</div>
         </div>
 
         <form class="form" method="POST" action="{{route('register')}}">
@@ -16,7 +16,7 @@
             <div class="form-group mb-5">
                 <input class="form-control h-auto form-control-solid py-4 px-8"
                        type="text"
-                       placeholder="Fullname"
+                       placeholder="@lang("Full Name")"
                        name="name"
                        value="{{old("name")}}"
                        required
@@ -42,7 +42,7 @@
             <div class="form-group mb-5">
                 <input class="form-control h-auto form-control-solid py-4 px-8"
                        type="password"
-                       placeholder="Password"
+                       placeholder="@lang("Password")"
                        name="password"
                        required
                 />
@@ -55,7 +55,7 @@
             <div class="form-group mb-5">
                 <input class="form-control h-auto form-control-solid py-4 px-8"
                        type="password"
-                       placeholder="Confirm Password"
+                       placeholder="@lang("Confirm Password")"
                        name="password_confirmation"
                        required
                 />
@@ -64,8 +64,8 @@
 
 
             <div class="form-group d-flex flex-wrap flex-center mt-10">
-                <button  class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Register</button>
-                <button  class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2">Cancel</button>
+                <button  class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">@lang("Register")</button>
+                <a href="/"  class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2">@lang("Cancel")</a>
             </div>
         </form>
     </div>
