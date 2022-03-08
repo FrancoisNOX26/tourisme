@@ -4,8 +4,8 @@
     <!--begin::Login Sign in form-->
     <div class="signin">
         <div class="mb-20">
-            <h3>Sign In To Admin</h3>
-            <div class="text-muted font-weight-bold">Enter your details to login to your account:</div>
+            <h3>@lang("Sign In To Admin")</h3>
+            <div class="text-muted font-weight-bold">@lang("Enter your details to login to your account") :</div>
         </div>
 
 
@@ -40,13 +40,13 @@
 
 
                 </span>
-                <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary">Forget Password ?</a>
+                <a href="javascript:;" id="kt_login_forgot" class="text-muted text-hover-primary">@lang("Forgot your password?")</a>
             </div>
-            <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Sign </button>
+            <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">@lang("Log in") </button>
         </form>
         <div class="mt-10">
-            <span class="opacity-70 mr-4">Don't have an account yet?</span>
-            <a href="{{route("register")}}"  class="text-muted text-hover-primary font-weight-bold">Sign Up!</a>
+            <span class="opacity-70 mr-4">@lang("Don't have an account yet?")</span>
+            <a href="{{route("register")}}"  class="text-muted text-hover-primary font-weight-bold">@lang("Register")</a>
         </div>
     </div>
     <!--end::Login Sign in form-->
