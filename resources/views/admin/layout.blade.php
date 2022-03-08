@@ -16,27 +16,43 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--begin::Head-->
 <head><base href="../../">
     <meta charset="utf-8" />
-    <title>Aside Light | Keenthemes</title>
+    <title>@yield('title')</title>
     <meta name="description" content="Aside light theme example" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
+
+
+
     <!--begin::Page Vendors Styles(used by this page)-->
     <link href="{{asset("assets/plugins/custom/fullcalendar/fullcalendar.bundle.css")}}" rel="stylesheet" type="text/css" />
     <!--end::Page Vendors Styles-->
+
+
+    <!--begin::DataTable css -->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
+    <!--end::DataTable css -->
+
+
     <!--begin::Global Theme Styles(used by all pages)-->
     <link href="{{asset("assets/plugins/global/plugins.bundle.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{asset("assets/plugins/custom/prismjs/prismjs.bundle.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{asset("assets/css/style.bundle.css")}}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles-->
+
     <!--begin::Layout Themes(used by all pages)-->
     <link href="{{asset("assets/css/themes/layout/header/base/light.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{asset("assets/css/themes/layout/header/menu/light.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{asset("assets/css/themes/layout/brand/light.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{asset("assets/css/themes/layout/aside/light.css")}}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
+
     <link rel="shortcut icon" href="{{asset("assets/media/logos/favicon.ico")}}" />
 </head>
 <!--end::Head-->
@@ -154,14 +170,166 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
 <!--end::Global Theme Bundle-->
+
 <!--begin::Page Vendors(used by this page)-->
 <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM"></script>
 <script src="assets/plugins/custom/gmaps/gmaps.js"></script>
 <!--end::Page Vendors-->
+
 <!--begin::Page Scripts(used by this page)-->
 <script src="assets/js/pages/widgets.js"></script>
 <!--end::Page Scripts-->
+
+
+<!--begin::DataTable Script-->
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2()
+    });
+</script>
+
+<!--end::Page Scripts-->
+
+
+<script>
+    $(function() {
+        let copyButtonTrans = '{{ trans('COPY') }}'
+        let csvButtonTrans = '{{ trans('CSV') }}'
+        let excelButtonTrans = '{{ trans('EXCEL') }}'
+        let pdfButtonTrans = '{{ trans('PDF') }}'
+        let printButtonTrans = '{{ trans('PRINT') }}'
+        let colvisButtonTrans = '{{ trans('COLVIS') }}'
+
+        $.extend(true, $.fn.dataTable.Buttons.defaults.dom.button, { className: 'btn' })
+        $.extend(true, $.fn.dataTable.defaults, {
+            language: {
+                @if (app()->getLocale() === 'fr')
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/French.json"
+                @endif
+                    @if (app()->getLocale() === 'en')
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/English.json"
+                @endif
+                    @if (app()->getLocale() === 'es')
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                @endif
+                    @if (app()->getLocale() === 'pt')
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese.json"
+                @endif
+            },
+            columnDefs: [{
+                orderable: false,
+                className: 'select-checkbox',
+                targets: 0
+            }, {
+                orderable: false,
+                searchable: false,
+                targets: -1
+            }],
+            select: {
+                style:    'multi+shift',
+                selector: 'td:first-child'
+            },
+            order: [],
+            scrollX: true,
+            pageLength: 100,
+            dom: 'lBfrtip<"actions">',
+            buttons: [
+                {
+                    extend: 'copy',
+                    className: 'btn-default',
+                    text: copyButtonTrans,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'csv',
+                    className: 'btn-default',
+                    text: csvButtonTrans,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    className: 'btn-default',
+                    text: excelButtonTrans,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    className: 'btn-default',
+                    text: pdfButtonTrans,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    className: 'btn-default',
+                    text: printButtonTrans,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'colvis',
+                    className: 'btn-default',
+                    text: colvisButtonTrans,
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+            ]
+        });
+
+        $.fn.dataTable.ext.classes.sPageButton = '';
+    });
+</script>
+
+@yield('DataTable')
+
+@yield('Page Scripts')
+
+<style>
+    #DataTables_Table_0_length{
+        display: inline-block;
+        margin-right: 10px;
+    }
+    #DataTables_Table_0_filter{
+        display: inline-block;
+        margin: 0;
+    }
+    .dt-buttons{
+        display: inline-block;
+        margin-right: 10px;
+    }
+</style>
+
 </body>
 <!--end::Body-->
 </html>

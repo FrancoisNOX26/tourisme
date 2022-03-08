@@ -21,4 +21,9 @@ class NavigationController extends Controller
         return redirect()->back()->cookie($cookie);
 
     }
+
+    public function dashboard(){
+        $header_title = "Dashboard";
+        return view('admin.dashboard', compact('header_title'));
+    }
 }

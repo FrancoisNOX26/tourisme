@@ -1,3 +1,12 @@
+<?php use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+
+$r = Route::current()->getAction() ?>
+<?php $route = (isset($r['as'])) ? $r['as'] : ''; ?>
+
+
+
+
 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
     <!--begin::Brand-->
     <div class="brand flex-column-auto" id="kt_brand">
@@ -26,7 +35,7 @@
             <!--begin::Menu Nav-->
             <ul class="menu-nav">
 
-                <li class="menu-item" aria-haspopup="true">
+                <li class="menu-item <?php echo (  Str::startsWith($route, 'dashboard') ) ? "menu-item-here" : '' ?>" aria-haspopup="true">
                     <a href="/home" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -43,7 +52,7 @@
                     </a>
                 </li>
 
-                <li class="menu-item" aria-haspopup="true">
+                <li class="menu-item <?php echo (  Str::startsWith($route, 'users') ) ? "menu-item-here" : '' ?>" aria-haspopup="true">
                     <a href="/home" class="menu-link">
 										<span class="svg-icon menu-icon">
 											<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
@@ -59,6 +68,9 @@
                         <span class="menu-text">@lang("Users")</span>
                     </a>
                 </li>
+
+
+
             </ul>
             <!--end::Menu Nav-->
         </div>
