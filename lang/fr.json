@@ -722,5 +722,11 @@
     "Enter your details to login to your account": "Entrez vos coordonnées pour vous connecter à votre compte",
     "Don't have an account yet?": "Vous n'avez pas encore de compte?",
     "Enter your details to create your account": "Entrez vos coordonnées pour créer votre compte",
-    "Full Name": "Nom(s) et prénom(s)"
+    "Full Name": "Nom(s) et prénom(s)",
+    "Hi": "Salut",
+    "Users": "Utilisateurs",
+    "User Profile": "Profil de l'utilisateur",
+    "My Profile": "Mon profil",
+    "Account settings and more": "Paramètres du compte et plus"
+
 }

@@ -39,7 +39,7 @@
 											</svg>
                                             <!--end::Svg Icon-->
 										</span>
-                        <span class="menu-text">Dashboard</span>
+                        <span class="menu-text">@lang("Dashboard")</span>
                     </a>
                 </li>
 
@@ -56,7 +56,7 @@
 											</svg>
                                             <!--end::Svg Icon-->
 										</span>
-                        <span class="menu-text">Users</span>
+                        <span class="menu-text">@lang("Users")</span>
                     </a>
                 </li>
             </ul>

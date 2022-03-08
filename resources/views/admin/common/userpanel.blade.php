@@ -1,7 +1,7 @@
 <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
     <!--begin::Header-->
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
-        <h3 class="font-weight-bold m-0">User Profile
+        <h3 class="font-weight-bold m-0">@lang("User Profile")
             <span></span></h3>
         <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
             <i class="ki ki-close icon-xs text-muted"></i>
@@ -38,7 +38,7 @@
 									<span class="navi-text text-muted text-hover-primary">{{auth()->user()->email}}</span>
 								</span>
                     </a>
-                    <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" onclick="event.preventDefault(); document.getElementById('logout').submit()">Sign Out</a>
+                    <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" onclick="event.preventDefault(); document.getElementById('logout').submit()">@lang("Log Out")</a>
                     <form method="post" action="{{route('logout')}}" id="logout" style="display: none">@csrf</form>
                 </div>
             </div>
@@ -68,8 +68,8 @@
                         </div>
                     </div>
                     <div class="navi-text">
-                        <div class="font-weight-bold">My Profile</div>
-                        <div class="text-muted">Account settings and more</div>
+                        <div class="font-weight-bold">@lang("My Profile")</div>
+                        <div class="text-muted">@lang("Account settings and more")</div>
                     </div>
                 </div>
             </a>

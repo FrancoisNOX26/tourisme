@@ -485,7 +485,13 @@
                 <!--begin::Toggle-->
                 <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-                        <img class="h-20px w-20px rounded-sm" src="assets/media/svg/flags/226-united-states.svg" alt="" />
+                        @if (app()->getLocale() == 'fr')
+                            <img class="h-20px w-20px rounded-sm"  src="{{asset('assets/media/svg/flags/195-france.svg')}}" alt="" />
+                        @elseif(app()->getLocale() == 'en')
+                            <img class="h-20px w-20px rounded-sm" src="{{asset('assets/media/svg/flags/226-united-states.svg')}}" alt="" />
+                        @else
+                            <img class="h-20px w-20px rounded-sm" src="{{asset('assets/media/svg/flags/226-united-states.svg')}}" alt="" />
+                        @endif
                     </div>
                 </div>
                 <!--end::Toggle-->
@@ -495,54 +501,26 @@
                     <ul class="navi navi-hover py-4">
                         <!--begin::Item-->
                         <li class="navi-item">
-                            <a href="#" class="navi-link">
+                            <a href="{{route('langue',['locale' => 'en'])}}" class="navi-link">
 													<span class="symbol symbol-20 mr-3">
-														<img src="assets/media/svg/flags/226-united-states.svg" alt="" />
+														<img src="{{asset('assets/media/svg/flags/226-united-states.svg')}}" alt="" />
 													</span>
                                 <span class="navi-text">English</span>
                             </a>
                         </li>
                         <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="navi-item active">
-                            <a href="#" class="navi-link">
-													<span class="symbol symbol-20 mr-3">
-														<img src="assets/media/svg/flags/128-spain.svg" alt="" />
-													</span>
-                                <span class="navi-text">Spanish</span>
-                            </a>
-                        </li>
-                        <!--end::Item-->
+
                         <!--begin::Item-->
                         <li class="navi-item">
-                            <a href="#" class="navi-link">
+                            <a href="{{route('langue', ['locale' => 'fr'])}}" class="navi-link">
 													<span class="symbol symbol-20 mr-3">
-														<img src="assets/media/svg/flags/162-germany.svg" alt="" />
+														<img src="{{asset('assets/media/svg/flags/195-france.svg')}}" alt="" />
 													</span>
-                                <span class="navi-text">German</span>
+                                <span class="navi-text">Français</span>
                             </a>
                         </li>
                         <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-													<span class="symbol symbol-20 mr-3">
-														<img src="assets/media/svg/flags/063-japan.svg" alt="" />
-													</span>
-                                <span class="navi-text">Japanese</span>
-                            </a>
-                        </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="navi-item">
-                            <a href="#" class="navi-link">
-													<span class="symbol symbol-20 mr-3">
-														<img src="assets/media/svg/flags/195-france.svg" alt="" />
-													</span>
-                                <span class="navi-text">French</span>
-                            </a>
-                        </li>
-                        <!--end::Item-->
+
                     </ul>
                     <!--end::Nav-->
                 </div>
@@ -553,7 +531,7 @@
             <!--begin::User-->
             <div class="topbar-item">
                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+                    <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">@lang("Hi"),</span>
                     <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{auth()->user()->name}}</span>
                     <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
 											<span class="symbol-label font-size-h5 font-weight-bold">{{substr(auth()->user()->name, 0, 1)}}</span>
