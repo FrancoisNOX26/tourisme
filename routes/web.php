@@ -17,23 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/signup', function () {
+Route::get('signup', function () {
     return view('auth.signup');
 });
 
-Route::get('/signin', function () {
+Route::get('signin', function () {
     return view('auth.signin');
 });
 
-Route::get('/forget', function () {
+Route::get('forget', function () {
     return view('auth.layout');
 });
 
 
-Route::get('/home', function (){
+Route::get('home', function (){
     return view('admin.dashboard');
 });
+
+Route::get('localization/{locale}', [\App\Http\Controllers\NavigationController::class, 'language'])->name('langue');
