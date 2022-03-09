@@ -34,4 +34,6 @@ Route::get('dashboard', [\App\Http\Controllers\NavigationController::class, 'das
 
 Route::resource('permissions', PermissionsController::class)->middleware('auth');
 
+Route::resource('users', PermissionsController::class)->middleware('auth');
+
 Route::get('localization/{locale}', [\App\Http\Controllers\NavigationController::class, 'language'])->name('langue');

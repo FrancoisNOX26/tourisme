@@ -43,9 +43,9 @@
                                     <th width="10">
 
                                     </th>
-                                    <th>@lang('name')</th>
+                                    <th>@lang('Name')</th>
                                     <th>
-                                        Action
+                                        Actions
                                     </th>
                                 </tr>
                                 </thead>
@@ -56,8 +56,8 @@
                                         <td>{{ $permission->name }}</td>
 
                                         <td>
-                                            <a href="{{ route('permissions.edit', ['permission' => $permission->id]) }}"
-                                               class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">
+                                            <a href="#"
+                                               class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details"  data-toggle="modal" data-target="#exampleModalSizeXl-{{$permission->id}}">
                                                         <span class="svg-icon svg-icon-success svg-icon-md"> <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -75,17 +75,83 @@
                                                                 </g>
                                                             </svg> </span>
                                             </a>
-                                            <form method="POST" style="display: inline-block"
+
+                                            <!--begin::Modal-->
+                                            <div class="modal fade" id="exampleModalSizeXl-{{$permission->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">@lang("Create permission")</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                                            </button>
+                                                        </div>
+                                                        <form class="form" id="create_form" method="POST"
+                                                              action="{{ route('permissions.update',['permission'=>$permission->id]) }}" enctype="multipart/form-data">
+                                                            <div class="modal-body">
+                                                                <!--begin::Wizard Form-->
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <div class="row justify-content-center">
+                                                                    <div class="col-xl-9">
+                                                                        <!--begin::Wizard Step 1-->
+                                                                        <div class="my-5 step" data-wizard-type="step-content"
+                                                                             data-wizard-state="current">
+                                                                            <!--begin::Group-->
+                                                                            <div class="form-group row">
+                                                                                <label
+                                                                                    class="col-xl-3 col-lg-3 col-form-label">@lang('Name')</label>
+                                                                                <div class="col-lg-9 col-xl-9">
+                                                                                    <div
+                                                                                        class="input-group input-group-solid input-group-lg">
+                                                                                        <input type="text"
+                                                                                               class="form-control form-control-solid form-control-lg @error('name') is-invalid @enderror"
+                                                                                               name="name"
+                                                                                               id="name"
+                                                                                               value="{{$permission->name}}"
+                                                                                        />
+                                                                                    </div>
+                                                                                    @error('name')
+                                                                                    <span class="form-text text-muted" role="alert"><strong
+                                                                                            class="text-danger">{{ $message }}</strong></span>
+                                                                                    @enderror
+                                                                                    <span class="form-text text-muted" role="alert"><strong
+                                                                                            class="text-danger name"></strong></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--end::Group-->
+                                                                        </div>
+                                                                        <!--end::Wizard Step 1-->
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--end::Wizard Form-->
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">@lang("Cancel")</button>
+                                                                <button type="submit" class="btn btn-primary font-weight-bold">@lang("Save")</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end::Modal-->
+
+                                            <form id="delete-{{$permission->id}}" method="POST" style="display: none"
                                                   action="{{ route('permissions.destroy', ['permission' => $permission->id]) }}"
                                                   accept-charset="UTF-8" class="delete">
                                                 @method("DELETE")
                                                 @csrf
-                                                <a href="#" class="btn btn-sm btn-clean btn-icon  delete"
-                                                   title="Delete"> <span
-                                                        class="svg-icon svg-icon-danger svg-icon-md"> <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                            height="24px" viewBox="0 0 24 24" version="1.1">
+                                            </form>
+                                            <a href="#"
+                                               onclick="event.preventDefault(); document.getElementById('delete-{{$permission->id}}').submit()"
+                                               class="btn btn-sm btn-clean btn-icon  delete"
+                                               title="Delete">
+                                                <span
+                                                    class="svg-icon svg-icon-danger svg-icon-md"> <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                        height="24px" viewBox="0 0 24 24" version="1.1">
                                                                     <g stroke="none" stroke-width="1" fill="none"
                                                                        fill-rule="evenodd">
                                                                         <rect x="0" y="0" width="24" height="24"></rect>
@@ -96,8 +162,8 @@
                                                                             d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
                                                                             fill="#000000" opacity="0.3"></path>
                                                                     </g>
-                                                                </svg> </span> </a>
-                                            </form>
+                                                                </svg> </span>
+                                            </a>
 
                                         </td>
                                     </tr>
@@ -107,29 +173,66 @@
                         </div>
                         <!--end: Datatable-->
                         <!--begin::Example-->
+
                         <!--begin::Modal-->
                         <div class="modal fade" id="exampleModalSizeXl" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">@lang("Create permission")</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <i aria-hidden="true" class="ki ki-close"></i>
                                         </button>
                                     </div>
+                                    <form class="form" id="create_form" method="POST"
+                                          action="{{ route('permissions.store') }}" enctype="multipart/form-data">
                                     <div class="modal-body">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                        <!--begin::Wizard Form-->
+                                            @csrf
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-9">
+                                                    <!--begin::Wizard Step 1-->
+                                                    <div class="my-5 step" data-wizard-type="step-content"
+                                                         data-wizard-state="current">
+                                                        <!--begin::Group-->
+                                                        <div class="form-group row">
+                                                            <label
+                                                                class="col-xl-3 col-lg-3 col-form-label">@lang('Name')</label>
+                                                            <div class="col-lg-9 col-xl-9">
+                                                                <div
+                                                                    class="input-group input-group-solid input-group-lg">
+                                                                    <input type="text"
+                                                                           class="form-control form-control-solid form-control-lg @error('name') is-invalid @enderror"
+                                                                           name="name" id="name"
+                                                                           />
+                                                                </div>
+                                                                @error('name')
+                                                                <span class="form-text text-muted" role="alert"><strong
+                                                                        class="text-danger">{{ $message }}</strong></span>
+                                                                @enderror
+                                                                <span class="form-text text-muted" role="alert"><strong
+                                                                        class="text-danger name"></strong></span>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Group-->
+                                                    </div>
+                                                    <!--end::Wizard Step 1-->
+
+                                                </div>
+                                            </div>
+                                        <!--end::Wizard Form-->
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary font-weight-bold">Save changes</button>
+                                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">@lang("Cancel")</button>
+                                        <button type="submit" class="btn btn-primary font-weight-bold">@lang("Save")</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         <!--end::Modal-->
+
+
                     </div>
                 </div>
                 <!--end::Card-->

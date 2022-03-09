@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Spatie\Permission\Models\Permission;
@@ -37,12 +38,22 @@ class PermissionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param Request $request
+     * @return array|RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        Permission::create($request->all());
+
+        if($request->ajax()){
+            // If request from AJAX
+            return [
+                'success' => true,
+                'redirect' => route('permissions.index'),
+            ];
+        } else {
+            return redirect()->route('permissions.index');
+        }
     }
 
     /**
@@ -70,23 +81,39 @@ class PermissionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @param Permission $permission
+     * @return array|RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
-        //
+        $id = $permission->id;
+        $validated = $request->validate([
+            'name' => "required|unique:permissions,name,$id",
+        ]);
+
+        $permission->update($request->all());
+
+        if($request->ajax()){
+            // If request from AJAX
+            return [
+                'success' => true,
+                'redirect' => route('permissions.index'),
+            ];
+        } else {
+            return redirect()->route('permissions.index');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Permission $permission
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        return redirect()->route('permissions.index');
     }
 }
