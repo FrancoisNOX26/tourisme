@@ -1,6 +1,11 @@
 @extends('admin.layout')
 
 
+@section('title')
+    {{ config('app.name') }} | @lang('Users')
+@endsection
+
+
 @section('content')
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -8,17 +13,18 @@
         <div class="d-flex flex-column-fluid">
             <!--begin::Container-->
             <div class="container">
+
                 <!--begin::Card-->
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-5">
                         <div class="card-title">
-                            <h3 class="card-label">@lang('Roles list')
+                            <h3 class="card-label">@lang('Users list')
 
                             </h3>
                         </div>
                         <div class="card-toolbar">
                             <!--begin::Button-->
-                            <a href="{{ route('roles.create') }}" class="btn btn-primary font-weight-bolder">
+                            <a href="{{ route('users.create') }}" class="btn btn-primary font-weight-bolder">
                                 <span class="svg-icon svg-icon-md">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -32,41 +38,67 @@
                                         </g>
                                     </svg>
                                     <!--end::Svg Icon-->
-                                </span>@lang('New Role')</a>
+                                </span>@lang('New User')</a>
                             <!--end::Button-->
                         </div>
                     </div>
                     <div class="card-body">
                         <!--begin: Datatable-->
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover datatable datatable-Permission">
+                            <table class="table table-bordered table-striped table-hover datatable datatable-User">
                                 <thead>
                                 <tr>
                                     <th width="10">
 
                                     </th>
                                     <th>@lang('name')</th>
-
-                                    <th>@lang('Permissions')</th>
-                                    <th>
-                                        Action
-                                    </th>
+                                    <th>@lang('email')</th>
+                                    <th>Role</th>
+                                    <th class="text-center">@lang('active')</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($roles as $role)
-                                    <tr data-entry-id="{{ $role->id }}">
+                                @foreach ($items as $user)
+                                    <tr data-entry-id="{{ $user->id }}">
                                         <td></td>
-                                        <td>{{ $role->name }}</td>
-
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
                                         <td>
-                                            @foreach($role->permissions()->pluck('name') as $permission)
-                                                <span class="label label-lg label-primary label-inline">{{ $permission }}</span>
+                                            @foreach($user->roles()->pluck('name') as $role)
+                                                <span class="label label-lg label-primary label-inline">{{ $role }}</span>
                                             @endforeach
                                         </td>
+                                        <td class="text-center">
+                                            @if ($user->active === 0 )
+                                                <span class="svg-icon svg-icon-danger svg-icon-2x">
+                                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Error-circle.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                        <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#000000"></path>
+                                                    </g>
+                                                </svg>
+                                                    <!--end::Svg Icon-->
+                                               </span>
+                                            @else
+                                                <span class="svg-icon svg-icon-success svg-icon-2x">
+                                                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Done-circle.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                        <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                    </g>
+                                                </svg>
+                                                    <!--end::Svg Icon-->
+                                            </span>
+                                            @endif
 
+                                        </td>
                                         <td>
-                                            <a href="{{ route('roles.edit', ['role' => $role->id]) }}"
+                                            <a href="{{ route('users.edit', ['user' => $user->id]) }}"
                                                class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">
                                                         <span class="svg-icon svg-icon-success svg-icon-md"> <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -86,14 +118,17 @@
                                                             </svg> </span>
                                             </a>
 
-                                            <form id="delete-{{$role->id}}" method="POST" style="display: none"
-                                                  action="{{ route('roles.destroy', ['role' => $role->id]) }}"
+
+
+
+                                            <form id="delete-{{$user->id}}" method="POST" style="display: none"
+                                                  action="{{ route('users.destroy', ['user' => $user->id]) }}"
                                                   accept-charset="UTF-8" class="delete">
                                                 @method("DELETE")
                                                 @csrf
                                             </form>
                                             <a href="#"
-                                               onclick="event.preventDefault(); document.getElementById('delete-{{$role->id}}').submit()"
+                                               onclick="event.preventDefault(); document.getElementById('delete-{{$user->id}}').submit()"
                                                class="btn btn-sm btn-clean btn-icon  delete"
                                                title="Delete">
                                                 <span
@@ -113,6 +148,7 @@
                                                                     </g>
                                                                 </svg> </span>
                                             </a>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -123,6 +159,7 @@
                     </div>
                 </div>
                 <!--end::Card-->
+
             </div>
             <!--end::Container-->
         </div>
@@ -131,8 +168,23 @@
     <!--end::Content-->
 @endsection
 
-
 @section('Page Vendors')
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{ asset('assets/vendors/js/tables/datatable/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/tables/datatable/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/tables/datatable/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/tables/datatable/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{ asset('assets/js/datatables/datatable.js') }}"></script>
+    <!-- END: Page JS-->
+
 
     <script>
         $(document).on('click', "form.delete a", function(e) {
@@ -162,12 +214,11 @@
 
     </script>
 
-@endsection
 
+@endsection
 
 @section('DataTable')
     <script>
-
         $(function () {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
@@ -175,32 +226,22 @@
                 order: [[ 1, 'desc' ]],
                 pageLength: 100,
             });
-            $('.datatable-Permission:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+            $('.datatable-User:not(.ajaxTable)').DataTable({ buttons: dtButtons })
             $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
                 $($.fn.dataTable.tables(true)).DataTable()
                     .columns.adjust();
             });
         })
-    </script>
-    <script>
-        $('.select-all').click(function () {
-            let $select2 = $(this).parent().siblings('.select2')
-            $select2.find('option').prop('selected', 'selected')
-            $select2.trigger('change')
-        })
-        $('.deselect-all').click(function () {
-            let $select2 = $(this).parent().siblings('.select2')
-            $select2.find('option').prop('selected', '')
-            $select2.trigger('change')
-        })
 
-        $('.select2').select2()
     </script>
 @endsection
-
 
 @section('Page Vendors Styles')
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/vendors.min.css') }}">
     <!-- END: Vendor CSS-->
+    <!--begin::Page Vendors Styles(used by this page)-->
+    <link href="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
+          type="text/css" />
+    <!--end::Page Vendors Styles-->
 @endsection

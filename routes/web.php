@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\NavigationController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,6 @@ Route::resource('permissions', PermissionsController::class)->middleware('auth')
 
 Route::resource('roles', RolesController::class)->middleware('auth');
 
-Route::resource('users', PermissionsController::class)->middleware('auth');
+Route::resource('users', UsersController::class)->middleware('auth');
 
 Route::get('localization/{locale}', [NavigationController::class, 'language'])->name('langue');
