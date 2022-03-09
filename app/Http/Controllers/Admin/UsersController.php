@@ -22,9 +22,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-//        if (! Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (! Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $items = User::all();
         $header_title= "users";
         return view('admin.users.index', compact('items','header_title'));
@@ -37,9 +37,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-//        if (! Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (! Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $header_title= "users.create";
         $roles = Role::get()->pluck('name', 'name');
         return view('admin.users.create', compact('roles','header_title'));
@@ -53,10 +53,9 @@ class UsersController extends Controller
      */
     public function store(CreateUsersRequest $request)
     {
-//        if (! Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
-
+        if (! Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $user = User::create($request->all());
         $roles = $request->input('roles') ? $request->input('roles') : [];
         if($request->ajax()){
@@ -92,9 +91,9 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-//        if (! Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (! Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $header_title= "users.edit";
         $roles = Role::get()->pluck('name', 'name');
 
@@ -110,9 +109,9 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-//        if (! Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
+        if (! Gate::allows('users_manage')) {
+            return abort(401);
+        }
 
         $id =$user->id;
         $validated = $request->validate([
@@ -146,10 +145,9 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-//        if (! Gate::allows('users_manage')) {
-//            return abort(401);
-//        }
-
+        if (! Gate::allows('users_manage')) {
+            return abort(401);
+        }
         $user->delete();
         return back()->withSuccess(trans('app.success_destroy'));
     }
