@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\PermissionsController;
+use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\NavigationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,10 +32,12 @@ Route::get('forget', function () {
     return view('auth.layout');
 });
 
-Route::get('dashboard', [\App\Http\Controllers\NavigationController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [NavigationController::class, 'dashboard'])->name('dashboard');
 
 Route::resource('permissions', PermissionsController::class)->middleware('auth');
 
+Route::resource('roles', RolesController::class)->middleware('auth');
+
 Route::resource('users', PermissionsController::class)->middleware('auth');
 
-Route::get('localization/{locale}', [\App\Http\Controllers\NavigationController::class, 'language'])->name('langue');
+Route::get('localization/{locale}', [NavigationController::class, 'language'])->name('langue');
