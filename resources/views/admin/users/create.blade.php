@@ -39,7 +39,7 @@
                                                             <div>
                                                                 <button type="submit" id="next-step"
                                                                         class="btn btn-primary font-weight-bolder px-9 py-4"
-                                                                        data-wizard-type="action-next">@lang('Submit')</button>
+                                                                        data-wizard-type="action-next">@lang('Save')</button>
                                                             </div>
                                                         </div>
                                                         <!--end::Wizard Actions-->

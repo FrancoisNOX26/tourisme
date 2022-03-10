@@ -42,3 +42,7 @@ Route::resource('roles', RolesController::class)->middleware('auth');
 Route::resource('users', UsersController::class)->middleware('auth');
 
 Route::get('localization/{locale}', [NavigationController::class, 'language'])->name('langue');
+
+Route::get('/', function () {
+   return view('front.index');
+});

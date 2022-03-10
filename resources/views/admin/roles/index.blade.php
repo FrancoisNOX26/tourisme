@@ -45,7 +45,7 @@
                                     <th width="10">
 
                                     </th>
-                                    <th>@lang('name')</th>
+                                    <th>@lang('Name')</th>
 
                                     <th>@lang('Permissions')</th>
                                     <th>

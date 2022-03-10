@@ -21,7 +21,7 @@ class PermissionsController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-        $header_title = "permisssions";
+        $header_title = "Permissions";
         return view('admin.permissions.index', compact('permissions','header_title'));
     }
 

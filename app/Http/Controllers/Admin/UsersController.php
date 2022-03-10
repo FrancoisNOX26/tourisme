@@ -26,7 +26,7 @@ class UsersController extends Controller
             return abort(401);
         }
         $items = User::all();
-        $header_title= "users";
+        $header_title= "Users";
         return view('admin.users.index', compact('items','header_title'));
     }
 

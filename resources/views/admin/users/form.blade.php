@@ -98,7 +98,7 @@
 
     <!--begin::Group-->
     <div class="form-group row">
-        <label class="col-xl-3 col-lg-3 col-form-label">@lang('Password confirmation')</label>
+        <label class="col-xl-3 col-lg-3 col-form-label">@lang('Confirm Password')</label>
         <div class="col-lg-9 col-xl-9">
             <div class="input-group input-group-solid input-group-lg">
                 <div class="input-group-prepend">
@@ -114,7 +114,7 @@
 
     <!--begin::Group-->
     <div class="form-group row">
-        <label class="col-xl-3 col-lg-3 col-form-label">@lang('Active')</label>
+        <label class="col-xl-3 col-lg-3 col-form-label">@lang('active')</label>
         <div class="col-lg-9 col-xl-9">
             <div class="input-group input-group-solid input-group-lg">
                 <div class="input-group-prepend">

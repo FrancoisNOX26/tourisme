@@ -424,7 +424,6 @@
     "Per Page": "Par Page",
     "Permanently delete this team.": "Supprimer définitivement cette team.",
     "Permanently delete your account.": "Supprimer définitivement ce compte.",
-    "Permissions": "Permissions",
     "Peru": "Pérou",
     "Philippines": "Philippines",
     "Photo": "Image",
@@ -727,6 +726,19 @@
     "Users": "Utilisateurs",
     "User Profile": "Profil de l'utilisateur",
     "My Profile": "Mon profil",
-    "Account settings and more": "Paramètres du compte et plus"
+    "Account settings and more": "Paramètres du compte et plus",
+    "Permissions list": "Liste des autorisations",
+    "Permissions": "Autorisations",
+    "New Permission": "Nouvelle autorisation",
+    "Roles list": "Liste des rôles",
+    "New Role": "Nouveau rôle",
+    "roles.create": "Création d'un rôle",
+    "roles.edit": "Modification d'un rôle",
+    "Users list": "Liste des utilisateurs",
+    "New User": "Nouvel utilisateur",
+    "active": "actif",
+    "users.create": "Création d'un utilisateur",
+    "users.edit": "Modification d'un utilisateur",
+    "User's Profile Details": "Détails du profil de l'utilisateur"
 
 }
