@@ -41,25 +41,7 @@
 
             <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#travel">Travel</a></li>
-                    <li><a href="#fashion">fashion</a></li>
-                    <li><a href="#team">team</a></li>
-                    <!-- Dropdown -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Pages
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="single.html">Single</a>
-                            <a class="dropdown-item" href="category.html">Category</a>
-                            <a class="dropdown-item" href="search.html">Search</a>
-                            <a class="dropdown-item" href="archive.html">Archive</a>
-                            <a class="dropdown-item" href="generic.html">Generic</a>
-                            <a class="dropdown-item" href="elements.html">Elements</a>
-                        </div>
-                    </li>
+                    <li><a href="#news">SITES</a></li>
                 </ul>
             </div>
         </div>
@@ -74,7 +56,7 @@
     <div class="container">
         <div class="row footer-bottom d-flex justify-content-between">
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            <p class="col-lg-8 col-sm-12 footer-text">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+            <p class="col-lg-8 col-sm-12 footer-text">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             <div class="col-lg-4 col-sm-12 footer-social">
                 <a href="#"><i class="fa fa-facebook"></i></a>

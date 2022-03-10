@@ -13,16 +13,16 @@
                     </h1>
                 </div>
                 <div class="head-bottom-meta d-flex justify-content-between align-items-end col-lg-12">
-                    <div class="col-lg-6 flex-row d-flex meta-left no-padding">
-                        <p><span class="lnr lnr-heart"></span> 15 Likes</p>
-                        <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-                    </div>
-                    <div class="col-lg-6 flex-row d-flex meta-right no-padding justify-content-end">
-                        <div class="user-meta">
-                            <h4 class="text-white">Mark wiens</h4>
-                            <p>12 Dec, 2017 11:21 am</p>
-                        </div>
-                        <img class="img-fluid user-img" src="{{asset("img/user.jpg")}}" alt="">
+{{--                    <div class="col-lg-6 flex-row d-flex meta-left no-padding">--}}
+{{--                        <p><span class="lnr lnr-heart"></span> 15 Likes</p>--}}
+{{--                        <p><span class="lnr lnr-bubble"></span> 02 Comments</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-6 flex-row d-flex meta-right no-padding justify-content-end">--}}
+{{--                        <div class="user-meta">--}}
+{{--                            <h4 class="text-white">Mark wiens</h4>--}}
+{{--                            <p>12 Dec, 2017 11:21 am</p>--}}
+{{--                        </div>--}}
+{{--                        <img class="img-fluid user-img" src="{{asset("img/user.jpg")}}" alt="">--}}
                     </div>
                 </div>
             </div>
@@ -30,91 +30,34 @@
     </section>
     <!-- End banner Area -->
 
-    <!-- Start travel Area -->
-    <section class="travel-area section-gap" id="travel">
+    <!-- Start fashion Area -->
+    <section class="fashion-area section-gap" id="fashion">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-70 col-lg-8">
                     <div class="title text-center">
-                        <h1 class="mb-10">Hot topics from Travel Section</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.</p>
+                        <h1 class="mb-10 text-uppercase">Les derniers sites mis en lignes.</h1>
+
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 travel-left">
-                    <div class="single-travel media pb-70">
-                        <img class="img-fluid d-flex  mr-3" src="img/t1.jpg" alt="">
-                        <div class="dates">
-                            <span>20</span>
-                            <p>Dec</p>
-                        </div>
-                        <div class="media-body align-self-center">
-                            <h4 class="mt-0"><a href="#">Addiction When Gambling
-                                    Becomes A Problem</a></h4>
-                            <p>inappropriate behavior Lorem ipsum dolor sit amet, consectetur.</p>
-                            <div class="meta-bottom d-flex justify-content-between">
-                                <p><span class="lnr lnr-heart"></span> 15 Likes</p>
-                                <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-travel media">
-                        <img class="img-fluid d-flex  mr-3" src="img/t3.jpg" alt="">
-                        <div class="dates">
-                            <span>20</span>
-                            <p>Dec</p>
-                        </div>
-                        <div class="media-body align-self-center">
-                            <h4 class="mt-0"><a href="#">Addiction When Gambling
-                                    Becomes A Problem</a></h4>
-                            <p>inappropriate behavior Lorem ipsum dolor sit amet, consectetur.</p>
-                            <div class="meta-bottom d-flex justify-content-between">
-                                <p><span class="lnr lnr-heart"></span> 15 Likes</p>
-                                <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-                            </div>
-                        </div>
-                    </div>
+                @foreach($sites as $key => $site)
+                <div class="col-lg-3 col-md-6 single-fashion">
+                    <img class="img-fluid" src="{{$site->avatar}}" alt="">
+                    <p class="date">{{$site->created_at->diffForHumans()}}</p>
+                    <h4><a href="#">{{$site->name}}</a></h4>
+                    <p>
+                        {{ substr($site->description,0, 100)  }}
+                    </p>
+
                 </div>
-                <div class="col-lg-6 travel-right">
-                    <div class="single-travel media pb-70">
-                        <img class="img-fluid d-flex  mr-3" src="img/t2.jpg" alt="">
-                        <div class="dates">
-                            <span>20</span>
-                            <p>Dec</p>
-                        </div>
-                        <div class="media-body align-self-center">
-                            <h4 class="mt-0"><a href="#">Addiction When Gambling
-                                    Becomes A Problem</a></h4>
-                            <p>inappropriate behavior Lorem ipsum dolor sit amet, consectetur.</p>
-                            <div class="meta-bottom d-flex justify-content-between">
-                                <p><span class="lnr lnr-heart"></span> 15 Likes</p>
-                                <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-travel media">
-                        <img class="img-fluid d-flex  mr-3" src="img/t4.jpg" alt="">
-                        <div class="dates">
-                            <span>20</span>
-                            <p>Dec</p>
-                        </div>
-                        <div class="media-body align-self-center">
-                            <h4 class="mt-0"><a href="#">Addiction When Gambling
-                                    Becomes A Problem</a></h4>
-                            <p>inappropriate behavior Lorem ipsum dolor sit amet, consectetur.</p>
-                            <div class="meta-bottom d-flex justify-content-between">
-                                <p><span class="lnr lnr-heart"></span> 15 Likes</p>
-                                <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="primary-btn load-more pbtn-2 text-uppercase mx-auto mt-60">Load More </a>
+                @endforeach
+                <a href="#" class="primary-btn load-more pbtn-2 text-uppercase mx-auto mt-60">Voir plus de sites </a>
             </div>
         </div>
     </section>
-    <!-- End travel Area -->
+    <!-- End fashion Area -->
 
     <!-- Start team Area -->
     <section class="team-area section-gap" id="team">
@@ -122,8 +65,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-70 col-lg-8">
                     <div class="title text-center">
-                        <h1 class="mb-10">About Blogger Team</h1>
-                        <p>Who are in extremely love with eco friendly system.</p>
+                        <h1 class="mb-10 text-uppercase">A propos du concepteur.</h1>
                     </div>
                 </div>
             </div>
@@ -140,7 +82,7 @@
                     <div class="row active-team-carusel">
                         <div class="single-team">
                             <div class="thumb">
-                                <img class="img-fluid" src="img/team1.jpg" alt="">
+                                <img class="img-fluid" src="{{asset("user1.jpeg")}}" alt="">
                                 <div class="align-items-center justify-content-center d-flex">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -148,13 +90,13 @@
                                 </div>
                             </div>
                             <div class="meta-text mt-30 text-center">
-                                <h4>Dora Walker</h4>
-                                <p>Senior Core Developer</p>
+                                <h4>NGAZOM PRISCA MONIQUE</h4>
+                                <p>ENS BERTOUA - Informatique option TIC Niveau 5 </p>
                             </div>
                         </div>
                         <div class="single-team">
                             <div class="thumb">
-                                <img class="img-fluid" src="img/team2.jpg" alt="">
+                                <img class="img-fluid" src="{{asset("user2.jpeg")}}" alt="">
                                 <div class="align-items-center justify-content-center d-flex">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -162,8 +104,8 @@
                                 </div>
                             </div>
                             <div class="meta-text mt-30 text-center">
-                                <h4>Lena Keller</h4>
-                                <p>Creative Content Developer</p>
+                                <h4>NGAZOM PRISCA MONIQUE</h4>
+                                <p>ENS BERTOUA - Informatique option TIC Niveau 5</p>
                             </div>
                         </div>
                     </div>

@@ -46,6 +46,4 @@ Route::resource('sites', SiteController::class)->middleware('auth');
 
 Route::get('localization/{locale}', [NavigationController::class, 'language'])->name('langue');
 
-Route::get('/', function () {
-   return view('front.index');
-});
+Route::get('/', [NavigationController::class,'index']);
