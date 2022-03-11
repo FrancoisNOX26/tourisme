@@ -47,3 +47,7 @@ Route::resource('sites', SiteController::class)->middleware('auth');
 Route::get('localization/{locale}', [NavigationController::class, 'language'])->name('langue');
 
 Route::get('/', [NavigationController::class,'index']);
+
+Route::get('allsites',[NavigationController::class, 'allsites'])->name('allsites');
+
+Route::get('showsite/{id}',[NavigationController::class, 'showsite'])->name('showsite');

@@ -53,7 +53,7 @@
 
                 </div>
                 @endforeach
-                <a href="#" class="primary-btn load-more pbtn-2 text-uppercase mx-auto mt-60">Voir plus de sites </a>
+                <a href="{{route("allsites")}}" class="primary-btn load-more pbtn-2 text-uppercase mx-auto mt-60">Voir plus de sites </a>
             </div>
         </div>
     </section>
